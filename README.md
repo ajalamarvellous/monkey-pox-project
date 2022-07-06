@@ -29,7 +29,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/ajalamarvellous/monkey_pox_projec">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -38,14 +38,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ajalamarvellous/monkey_pox_project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/ajalamarvellous/monkey_pox_project">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/ajalamarvellous/monkey_pox_project/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/ajalamarvellous/monkey_pox_project">Request Feature</a>
   </p>
 </div>
 
@@ -142,12 +142,12 @@ We will talk about the various feature engineering techniques used.
 
 ## Visualizations
 
-Here will contain explanation of some charts and visualizations we created, techniques 
+Here will contain explanation of some charts and visualizations we created, techniques
 and tools used.
 
 ## Model training
 
-Here we will talk about the models, the various models tried and thought into the types 
+Here we will talk about the models, the various models tried and thought into the types
 of models used.
 
 ## Model deployment
