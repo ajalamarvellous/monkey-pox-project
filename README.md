@@ -96,6 +96,7 @@
 Monkey Pox visualization project aims to provide the world with a continually updated visualization to follow with the trend of Monkey pox epidermics globally.
 It provides charts to follow the trend of monkey pox globally, by region or by country.
 The data is continuosly updated everyday to keep the charts and visualizations up to date.
+similar to [our world in data](https://ourworldindata.org/monkeypox)
 The project also seeks to answer so basic and frequently asked questions about the epidermic such as:
 * Country with the highest cases
 * Country with the lowest cases
@@ -140,8 +141,11 @@ See the [open issues](https://github.com/ajalamarvellous/monkey-pox-project/issu
 
 #### Data
 
+Data sources:
+[globaldothealth](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv)
+[globaldothealth-new-cases](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv)
+Here we will talk about the sources of the data and the script for sourcing the data
 
-Here we will talk about the sources of the data and the script fpr sourcing the data
 
 #### Preprocessing
 
