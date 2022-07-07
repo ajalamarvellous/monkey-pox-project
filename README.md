@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ajalamarvellous/monkey-pox-project">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Monkey Pox Visualisation and Modeling Project</h3>
@@ -246,8 +246,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-* Ajala, Marvellous - [@madeofajala](https://twitter.com/madeofajala) - ajalaoluwamayowa00@gmail.com
-* Alokam, Augusta - [@only_nenye](https://twitter.com/only_nenye) - user@email_client.com
+- Ajala, Marvellous - [@madeofajala](https://twitter.com/madeofajala) - ajalaoluwamayowa00@gmail.com
+- Alokam, Augusta - [@only_nenye](https://twitter.com/only_nenye) - user@email_client.com
 
 Project Link: [https://github.com/ajalamarvellous/monkey-pox-project](https://github.com/ajalamarvellous/monkey-pox-project)
 
