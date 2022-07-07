@@ -29,11 +29,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ajalamarvellous/monkey_pox_projec">
+  <a href="https://github.com/ajalamarvellous/monkey_pox_project">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Monkey Pox Visualisation and Modeling Project</h3>
 
   <p align="center">
     project_description
@@ -58,7 +58,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#going-to-be-built-with">Built With</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -67,8 +67,8 @@
         <li><a href="#preprocessing">Preprocessing</a></li>
         <li><a href="#feature-engineering">Feature engineering</a></li>
         <li><a href="#visualizations">Visualizations</a></li>
-        <li><a href="#model-training">Model training</a></li>
-        <li><a href="#model-deployment">Model deployment</a></li>
+        <li><a href="#model">Model training</a></li>
+        <li><a href="#deployment">Model deployment</a></li>
       </ul>
     </li>
     <li>
@@ -93,7 +93,18 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Monkey Pox visualization project aims to provide the world with a continually updated visualization to follow with the trend of Monkey pox epidermics globally.
+It provides charts to follow the trend of monkey pox globally, by region or by country.
+The data is continuosly updated everyday to keep the charts and visualizations up to date.
+The project also seeks to answer so basic and frequently asked questions about the epidermic such as:
+* Country with the highest cases
+* Country with the lowest cases
+* Cases per region
+* Region with the highest cases
+* Region with the lowest cases
+* Date of highest cases per Country
+* Date of lower cases per Country
+and many other questions
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -126,34 +137,35 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 - [ ] Model deployments
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ajalamarvellous/monkey_pox_project/issues) for a full list of proposed features (and known issues).
 
-## Data sourcing
+#### Data
 
 
 Here we will talk about the sources of the data and the script fpr sourcing the data
 
-## Preprocessing
+#### Preprocessing
 
 Here we are going to talk about the preprocessing process
 
-## Feature engineering
+#### Feature engineering
 
 We will talk about the various feature engineering techniques used.
 
-## Visualizations
+#### Visualizations
 
-Here will contain explanation of some charts and visualizations we created, techniques
-and tools used.
+Here will contain explanation of some charts and visualizations we created,
+techniques and tools used.
 
-## Model training
+#### Model
 
-Here we will talk about the models, the various models tried and thought into the types
-of models used.
+Here we will talk about the models, the various models tried and thought into
+the types of models used.
 
-## Model deployment
+#### Deployment
 
-Here we will discuss the various technologies and techniques used to deploy the model.
+Here we will discuss the various technologies and techniques used to deploy the
+model.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -166,7 +178,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+This is an example of how to list things you need to use the software and how
+to install them.
 * npm
   ```sh
   npm install npm@latest -g
@@ -195,9 +208,10 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this space to show useful examples of how a project can be used.
+Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -233,9 +247,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Ajala, Marvellous - [@madeofajala](https://twitter.com/madeofajala) - ajalaoluwamayowa00@gmail.com
+Alokam, Augusta - [@only_nenye](https://twitter.com/only_nenye) - user@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/ajalamarvellous/monkey_pox_project](https://github.com/ajalamarvellous/monkey_pox_project)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
