@@ -17,7 +17,7 @@ def get_data(url):
         logger.info("File downloaded safely")
         return data
     except Exception as exec:
-        logger.error(f"File download was not successful due to {exec}")
+        logger.exception(f"File download was not successful due to {exec}")
 
 
 def get_name(url):
