@@ -114,11 +114,10 @@ and many other questions
 
 * [Python](https://Python.org/)
 * [Pandas](https://pandas.pydata.org/)
-* [Matplotlib]()
-* [Seaborne]()
-* [Plotly]()
-* [Dash]()
-* [Streamlit]()
+* [Matplotlib](https://matplotlib.org/)
+* [Seaborn](https://seaborn.pydata.org/)
+* [Dash](https://dash.plotly,com/)
+* [Streamlit](https://streamlit.io/)
 * [sklearn](https://scikit-learn.org/)
 * [panel]()
 
