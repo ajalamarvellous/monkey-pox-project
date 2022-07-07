@@ -1,6 +1,7 @@
 import requests
 import csv
 import logging
+import os
 
 log_fmt = "%(asctime)s - [%(name)s] - %(levelname)s : %(message)s"
 logging.BasicConfig(level=logging.INFO, format=log_fmt)
@@ -18,6 +19,19 @@ def get_data(url):
     except Exception as exec:
         logger.error(f"File download was not successful due to {exec}")
 
+
 def get_name(url):
     """Retrieves the name of the file from the url address"""
     return url.split("/")[-1]
+
+
+def save_file(data, filename):
+    """Saves the data to into the file"""
+    address = os.path.join(os.getcwd().split("/")[:-1],
+                            "data", "raw", filename)
+    file = open(address, "w+")
+    csv_writer = csv.Writer(file)
+    for line in data:
+        csv_writer.writerow(line))
+    file.close()
+    logger.info("File written and saved successfully")
