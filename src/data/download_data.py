@@ -17,3 +17,7 @@ def get_data(url):
         return data
     except Exception as exec:
         logger.error(f"File download was not successful due to {exec}")
+
+def get_name(url):
+    """Retrieves the name of the file from the url address"""
+    return url.split("/")[-1]
