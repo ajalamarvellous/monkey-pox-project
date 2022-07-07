@@ -29,7 +29,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ajalamarvellous/monkey_pox_project">
+  <a href="https://github.com/ajalamarvellous/monkey-pox-project">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -38,14 +38,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/ajalamarvellous/monkey_pox_project"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ajalamarvellous/monkey-pox-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ajalamarvellous/monkey_pox_project">View Demo</a>
+    <a href="https://github.com/ajalamarvellous/monkey-pox-project">View Demo</a>
     ·
-    <a href="https://github.com/ajalamarvellous/monkey_pox_project/issues">Report Bug</a>
+    <a href="https://github.com/ajalamarvellous/monkey-pox-project/issues">Report Bug</a>
     ·
-    <a href="https://github.com/ajalamarvellous/monkey_pox_project">Request Feature</a>
+    <a href="https://github.com/ajalamarvellous/monkey-pox-project/issues">Request Feature</a>
   </p>
 </div>
 
@@ -136,7 +136,7 @@ and many other questions
 - [ ] Model deployments
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/ajalamarvellous/monkey_pox_project/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ajalamarvellous/monkey-pox-project/issues) for a full list of proposed features (and known issues).
 
 #### Data
 
@@ -189,7 +189,7 @@ to install them.
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/ajalamarvellous/monkey-pox-project.git
    ```
 3. Install NPM packages
    ```sh
@@ -246,10 +246,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Ajala, Marvellous - [@madeofajala](https://twitter.com/madeofajala) - ajalaoluwamayowa00@gmail.com
-Alokam, Augusta - [@only_nenye](https://twitter.com/only_nenye) - user@email_client.com
+* Ajala, Marvellous - [@madeofajala](https://twitter.com/madeofajala) - ajalaoluwamayowa00@gmail.com
+* Alokam, Augusta - [@only_nenye](https://twitter.com/only_nenye) - user@email_client.com
 
-Project Link: [https://github.com/ajalamarvellous/monkey_pox_project](https://github.com/ajalamarvellous/monkey_pox_project)
+Project Link: [https://github.com/ajalamarvellous/monkey-pox-project](https://github.com/ajalamarvellous/monkey-pox-project)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
