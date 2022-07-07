@@ -3,9 +3,12 @@ import csv
 import logging
 import os
 
+log_destination = os.path.join(os.getcwd().split("/")[:-1],
+                           docs, "download.log")
 log_fmt = "%(asctime)s - [%(name)s] - %(levelname)s : %(message)s"
-logging.BasicConfig(level=logging.INFO, format=log_fmt)
-logger = logging.getLogger()
+logging.BasicConfig(level=logging.INFO, format=log_fmt,
+                     filename=log_destination)
+logger = logging.getLogger(__name__)
 
 
 def get_data(url):
