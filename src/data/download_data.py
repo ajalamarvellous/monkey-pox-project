@@ -5,7 +5,7 @@ import os
 
 log_destination = os.path.join(os.getcwd().split("/")[:-1],
                            docs, "download.log")
-log_fmt = "%(asctime)s - [%(name)s] - %(levelname)s : %(message)s"
+log_fmt = "%(name)s %(asctime)s - [%(funcName)s] - %(levelname)s : %(message)s"
 logging.BasicConfig(level=logging.INFO, format=log_fmt,
                      filename=log_destination)
 logger = logging.getLogger(__name__)
@@ -38,3 +38,18 @@ def save_file(data, filename):
         csv_writer.writerow(line))
     file.close()
     logger.info("File written and saved successfully")
+
+def main():
+    url_list = [
+        "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv",
+        "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv",
+        ]
+    for url in url_list:
+        data = get_data(url)
+        filename = get_name(url)
+        save_file(data=data, filename=filename)
+    logger.info("Task completed...")
+
+
+if __name__ == "__main__":
+    main()
