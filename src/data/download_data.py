@@ -3,11 +3,10 @@ import csv
 import logging
 import os
 
-log_destination = os.path.join(os.getcwd().split("/")[:-1],
-                           docs, "download.log")
+
 log_fmt = "%(name)s %(asctime)s - [%(funcName)s] - %(levelname)s : %(message)s"
-logging.BasicConfig(level=logging.INFO, format=log_fmt,
-                     filename=log_destination)
+logging.basicConfig(level=logging.INFO, format=log_fmt,
+                     filename="docs/download.log")
 logger = logging.getLogger(__name__)
 
 
@@ -28,14 +27,13 @@ def get_name(url):
     return url.split("/")[-1]
 
 
-def save_file(data, filename):
+def save_file(data, file_name):
     """Saves the data to into the file"""
-    address = os.path.join(os.getcwd().split("/")[:-1],
-                            "data", "raw", filename)
+    address = os.path.join("data", "raw", file_name)
     file = open(address, "w+")
-    csv_writer = csv.Writer(file)
+    csv_writer = csv.writer(file)
     for line in data:
-        csv_writer.writerow(line))
+        csv_writer.writerow(line)
     file.close()
     logger.info("File written and saved successfully")
 
@@ -47,7 +45,7 @@ def main():
     for url in url_list:
         data = get_data(url)
         filename = get_name(url)
-        save_file(data=data, filename=filename)
+        save_file(data=data, file_name= filename)
     logger.info("Task completed...")
 
 
