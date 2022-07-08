@@ -2,7 +2,7 @@ import requests
 import csv
 import logging
 import os
-from datetime import timedelta
+from datetime import timedelta, datetime
 from prefect import task, Flow
 from prefect.schedules import IntervalSchedule
 
@@ -21,7 +21,7 @@ def get_data(url):
     try:
         data.raise_for_status()
         logger.info("File downloaded safely")
-        return data
+        return data.text.split("/n")
     except Exception as exec:
         logger.exception(f"File download was not successful due to {exec}")
 
@@ -35,20 +35,20 @@ def get_name(url):
 @task
 def save_file(data, file_name):
     """Saves the data to into the file"""
-    address = os.path.join("data", "raw", file_name)
+    address = os.path.join("data", "raw", datetime.now().ctime()+ " " + file_name) # noqa
     file = open(address, "w+")
     csv_writer = csv.writer(file)
     for line in data:
-        csv_writer.writerow(line)
+        csv_writer.writerow(line.split(","))
     file.close()
     logger.info("File written and saved successfully")
 
 
 # Schedule for how often to run the tasks
-scheduler = IntervalSchedule(interval=timedelta(days=1))
+#scheduler = IntervalSchedule(interval=timedelta(days=1))
 
 def main():
-    with Flow(name="Data download pipeline", schedule=scheduler) as flow:
+    with Flow(name="Data download pipeline") as flow:
         url_list = [
             "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv", # noqa
             "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv", # noqa
