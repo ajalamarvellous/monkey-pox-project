@@ -44,6 +44,7 @@ def save_file(data, file_name):
     logger.info("File written and saved successfully")
 
 
+# TO FIX:
 # Schedule for how often to run the tasks
 #scheduler = IntervalSchedule(interval=timedelta(days=1))
 
