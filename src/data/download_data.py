@@ -2,6 +2,9 @@ import requests
 import csv
 import logging
 import os
+from datetime import timedelta
+from prefect import task, Flow
+from prefect.schedules import IntervalSchedule
 
 
 log_fmt = "%(name)s %(asctime)s - [%(funcName)s] - %(levelname)s : %(message)s"
@@ -9,6 +12,8 @@ logging.basicConfig(level=logging.INFO, format=log_fmt, filename="docs/download.
 logger = logging.getLogger(__name__)
 
 
+# Add task to encapsulate our function and retry 10 if it fails
+@task(max_retries=10, retry_delay=timedelta(seconds=10))
 def get_data(url):
     """Retrieves the data from the internet"""
     data = requests.get(url)
@@ -21,11 +26,13 @@ def get_data(url):
         logger.exception(f"File download was not successful due to {exec}")
 
 
+@task
 def get_name(url):
     """Retrieves the name of the file from the url address"""
     return url.split("/")[-1]
 
 
+@task
 def save_file(data, file_name):
     """Saves the data to into the file"""
     address = os.path.join("data", "raw", file_name)
@@ -37,17 +44,23 @@ def save_file(data, file_name):
     logger.info("File written and saved successfully")
 
 
+# Schedule for how often to run the tasks
+scheduler = IntervalSchedule(interval=timedelta(days=1))
+
 def main():
-    url_list = [
-        "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv", # noqa
-        "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv", # noqa
-    ]
-    for url in url_list:
-        data = get_data(url)
-        filename = get_name(url)
-        save_file(data=data, file_name=filename)
-    logger.info("Task completed...")
+    with Flow(name="Data download pipeline", schedule=scheduler) as flow:
+        url_list = [
+            "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv", # noqa
+            "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv", # noqa
+        ]
+        for url in url_list:
+            data = get_data(url)
+            filename = get_name(url)
+            save_file(data=data, file_name=filename)
+        logger.info("Task completed...")
+    return flow
 
 
 if __name__ == "__main__":
-    main()
+    prefect_flow = main()
+    prefect_flow.run()
