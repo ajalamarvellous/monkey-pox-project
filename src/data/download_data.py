@@ -24,7 +24,7 @@ def get_data(url):
     try:
         data.raise_for_status()
         logger.info("File downloaded safely")
-        return data.text.split("/n")
+        return data.text.split("\n")
     except Exception as error:
         logger.exception(f"File download was not successful due to {error}")
 
