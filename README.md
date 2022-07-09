@@ -130,7 +130,7 @@ and many other questions
 ## Roadmap
 
 - [x] Data sourcing
-- - [ ] Fix data downloads scheduler 
+- - [ ] Fix data downloads scheduler
 - [ ] Preprocessing
 - [ ] Feature engineering
 - [ ] visualizations
