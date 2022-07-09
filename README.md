@@ -129,7 +129,7 @@ and many other questions
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Data sourcing
+- [x] Data download (to download the data, just run python src/data/download_data.py)
 - - [ ] Fix data downloads scheduler
 - [ ] Preprocessing
 - [ ] Feature engineering
@@ -143,8 +143,8 @@ See the [open issues](https://github.com/ajalamarvellous/monkey-pox-project/issu
 #### Data
 
 Data sources:
-[globaldothealth](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv)
-[globaldothealth-new-cases](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv)
+- [globaldothealth](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/timeseries-country-confirmed.csv)
+- [globaldothealth-new-cases](https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv)
 Here we will talk about the sources of the data and the script for sourcing the data
 
 
