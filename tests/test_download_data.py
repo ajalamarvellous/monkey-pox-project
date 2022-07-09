@@ -10,7 +10,7 @@ import download_data as dd  # noqa
 
 @pytest.fixture
 def url():
-    return "https://www.google.com/"
+    return "https://www.google.com"
 
 
 def test_get_data(url):
@@ -22,8 +22,9 @@ def test_get_data(url):
     assert isinstance(data[0], str)
 
 
-def test_get_name():
-    pass
+def test_get_name(url):
+    name = dd.get_name.run(url)
+    assert name == "www.google.com"
 
 
 def test_save_file():
