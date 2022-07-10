@@ -12,8 +12,11 @@ import click
 def file_address(dir, tail):
     """This function gets the file location of the file we want to modify"""
     files = os.listdir(dir)
-    latest = [x for x in files if x.endswith(tail)][0]
-    address = "/".join([dir, latest])
+    latest = [x for x in files if x.endswith(tail)]
+    if latest != []:
+        address = "/".join([dir, latest[0]])
+    else:
+        address = "/".join([dir, tail])
     return address
 
 
@@ -115,6 +118,23 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
+    address = file_address(dir=input_filepath, tail="latest.csv")
+    file = get_file(address, format="read")
+    new_address = file_address(dir=output_filepath, tail="latest.csv")
+    writer = get_file(new_address, format="write")
+    header_len = len_(file[0])
+    n = 0
+    for line in file:
+        if MODIFY_LINE(line, header_len):
+            n += 1
+            start_values = get_values(line, "start")
+            start_index = get_index(line, start_values)
+            end_values = get_values(line, "end")
+            end_index = get_index(line, end_values)
+            new_words = concat_words(line, start_index, end_index)
+            line = replace_words(line, new_words, start_index, end_index)
+        write_line(writer, line)
+    logger.info(f"file completely reformatted and resaved. {n} lines fixed")
 
 
 if __name__ == "__main__":
