@@ -25,9 +25,20 @@ def get_file(address):
     return csv_file
 
 
-def len_header(header):
-    """Returns the length of the header"""
+def len_(header):
+    """Returns the length of the row"""
     return len(header)
+
+
+def MODIFY_LINE(line, header_len):
+    """
+    This function checks whether to modify line or not, if the line is longer
+    than the header, then something is wrong with the line
+    """
+    if len_(line) > header_len:
+        return True
+    else:
+        return False
 
 
 @click.command()
