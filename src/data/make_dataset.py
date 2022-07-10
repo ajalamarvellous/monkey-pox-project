@@ -76,6 +76,22 @@ def concat_words(line, start_index, end_index):
     return new_word_list
 
 
+def replace_words(line, words, start_index, end_index):
+    """
+    This function removes the initial values spread across columns and inserts
+    the new concatenated words
+    """
+    # We are accessing the values backwards so as to preserve the indices we
+    # have and know as changing from the beginnig will mess up the indices we
+    # already know and we might end up placing the value in the wrong place
+    for word, x, y in zip(words[::-1], start_index[::-1], end_index[::-1]):
+        for index in range(x, y + 1):
+            word_ = line[index]
+            line.remove(word_)
+        line.insert(x, word)
+    return line
+
+
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
 @click.argument("output_filepath", type=click.Path())
@@ -85,6 +101,26 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
+    address = file_address(dir=input_filepath, tail="latest.csv")
+    file = get_file(address)
+    header_len = len_(file[0])
+    n = 0
+    for line in file:
+        if MODIFY_LINE(line, header_len):
+            n += 1
+            start_values = get_values(line, "start")
+            start_index = get_index(line, start_values)
+            end_values = get_values(line, "end")
+            end_index = get_index(line, end_values)
+            new_words = concat_words(line, start_index, end_index)
+            line = replace_words(line, new_words, start_index, end_index)
+            if n > 3:
+                break
+    logger.info(
+        f"Total odd lines {n}, values {start_values, end_values}, \
+            indices {start_index, end_index} and new word {new_words} and \
+            new length of line is {len_(line)}"
+    )
 
 
 if __name__ == "__main__":
