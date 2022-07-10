@@ -17,12 +17,21 @@ def file_address(dir, tail):
     return address
 
 
-def get_file(address):
-    """This function reads and return the content of the document"""
-    file = open(address, "r")
-    csv_file = list(csv.reader(file))
-    file.close()
-    return csv_file
+def get_file(address, format):
+    """
+    This function reads and return the content of the document or overwrites it
+    """
+    if format == "read":
+        file = open(address, "r")
+        csv_file = list(csv.reader(file))
+        file.close()
+        return csv_file
+    elif format == "write":
+        file = open(address, "w+")
+        writer = csv.writer(file)
+        return writer
+    else:
+        raise Exception("That is not a correct format")
 
 
 def len_(header):
@@ -101,26 +110,6 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
-    address = file_address(dir=input_filepath, tail="latest.csv")
-    file = get_file(address)
-    header_len = len_(file[0])
-    n = 0
-    for line in file:
-        if MODIFY_LINE(line, header_len):
-            n += 1
-            start_values = get_values(line, "start")
-            start_index = get_index(line, start_values)
-            end_values = get_values(line, "end")
-            end_index = get_index(line, end_values)
-            new_words = concat_words(line, start_index, end_index)
-            line = replace_words(line, new_words, start_index, end_index)
-            if n > 3:
-                break
-    logger.info(
-        f"Total odd lines {n}, values {start_values, end_values}, \
-            indices {start_index, end_index} and new word {new_words} and \
-            new length of line is {len_(line)}"
-    )
 
 
 if __name__ == "__main__":
