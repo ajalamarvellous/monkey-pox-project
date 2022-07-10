@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import csv
 import logging
 import os
 from pathlib import Path
@@ -10,11 +11,18 @@ import click
 
 def file_address(dir, tail):
     """This function gets the file location of the file we want to modify"""
-    # dir = "../../data/raw"
     files = os.listdir(dir)
     latest = [x for x in files if x.endswith(tail)][0]
     address = "/".join([dir, latest])
     return address
+
+
+def get_file(address):
+    """This file reads and return the content of the document"""
+    file = open(address, "r")
+    csv_file = list(csv.reader(file))
+    file.close()
+    return csv_file
 
 
 @click.command()
