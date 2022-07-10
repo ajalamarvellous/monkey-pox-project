@@ -1,9 +1,20 @@
 # -*- coding: utf-8 -*-
 import logging
+import os
 from pathlib import Path
 
 import click
-from dotenv import find_dotenv, load_dotenv
+
+# from dotenv import find_dotenv, load_dotenv
+
+
+def file_address(dir, tail):
+    """This function gets the file location of the file we want to modify"""
+    # dir = "../../data/raw"
+    files = os.listdir(dir)
+    latest = [x for x in files if x.endswith(tail)][0]
+    address = "/".join([dir, latest])
+    return address
 
 
 @click.command()
@@ -26,6 +37,6 @@ if __name__ == "__main__":
 
     # find .env automagically by walking up directories until it's found, then
     # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
+    # load_dotenv(find_dotenv())
 
     main()
