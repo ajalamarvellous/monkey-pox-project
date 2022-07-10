@@ -50,6 +50,13 @@ def get_values(line, pos):
     return values
 
 
+def get_index(line, values):
+    """This function returns the index of a word in a row"""
+    index = [line.index(x) for x in values]
+    index.sort()
+    return index
+
+
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
 @click.argument("output_filepath", type=click.Path())
