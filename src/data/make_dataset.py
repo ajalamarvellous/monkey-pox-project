@@ -57,6 +57,25 @@ def get_index(line, values):
     return index
 
 
+def concat_words(line, start_index, end_index):
+    """
+    This function makes new words by joing words from starting index to ending
+    index
+    """
+    new_word_list = []
+    # Zip allows us to pass a list as both start index and end_index and allow
+    # us to pick the values inside them one after the other.
+    for x, y in zip(start_index, end_index):
+        # "" instantiates a new string with no value
+        new_word = ""
+        # y+1 because range in not upper {higher) value inclusive, so as to
+        # the end index value also
+        for index in range(x, y + 1):
+            new_word += line[index]
+        new_word_list.append(new_word.strip('"'))
+    return new_word_list
+
+
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
 @click.argument("output_filepath", type=click.Path())
