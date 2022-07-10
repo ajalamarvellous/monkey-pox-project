@@ -18,11 +18,16 @@ def file_address(dir, tail):
 
 
 def get_file(address):
-    """This file reads and return the content of the document"""
+    """This function reads and return the content of the document"""
     file = open(address, "r")
     csv_file = list(csv.reader(file))
     file.close()
     return csv_file
+
+
+def len_header(header):
+    """Returns the length of the header"""
+    return len(header)
 
 
 @click.command()
