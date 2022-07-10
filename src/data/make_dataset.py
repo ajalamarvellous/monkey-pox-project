@@ -41,6 +41,15 @@ def MODIFY_LINE(line, header_len):
         return False
 
 
+def get_values(line, pos):
+    """This function get the values that are splitted across multiple values"""
+    if pos == "start":
+        values = [x for x in line if x.startswith('"')]
+    elif pos == "end":
+        values = [x for x in line if x.endswith('"')]
+    return values
+
+
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
 @click.argument("output_filepath", type=click.Path())
