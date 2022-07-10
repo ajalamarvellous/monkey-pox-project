@@ -27,7 +27,7 @@ def get_file(address, format):
         file.close()
         return csv_file
     elif format == "write":
-        file = open(address, "w+")
+        file = open(address, "w", newline="")
         writer = csv.writer(file)
         return writer
     else:
@@ -99,6 +99,11 @@ def replace_words(line, words, start_index, end_index):
             line.remove(word_)
         line.insert(x, word)
     return line
+
+
+def write_line(writer, line):
+    """This function writes a new line into the csv file"""
+    writer.writerow(line)
 
 
 @click.command()
