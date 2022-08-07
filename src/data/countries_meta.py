@@ -23,3 +23,7 @@ def get_countries(table_url: str, output_filepath: str):
     filename = Path(output_filepath, "countries_meta.parquet")
     df.to_parquet(filename)
     return df
+
+
+if __name__ == "__main__":
+    get_countries()
