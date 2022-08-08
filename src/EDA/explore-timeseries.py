@@ -209,3 +209,37 @@ def rate_of_change(df: object, duration: int):
             # update start date to start from end of previous interval
             start_date = interval_end
     return rate_dict
+
+
+# get dictionary containing rate of change in countries
+rate_change_dict = rate_of_change(df=df, duration=30)
+
+# getting the countries
+countries = df.Country.unique()
+
+# values for rate_change_dict (rcd)
+rcd_dict_values = list(rate_change_dict.values())
+# keys of the values of timestamp
+timestamps = [list(x.keys()) for x in rcd_dict_values]
+# linearize timestamps to give a single list as opposed to list in list
+all_timestamps = []
+for x in timestamps:
+    all_timestamps.extend(x)
+
+# Unique timestamp values
+timestamp = set(all_timestamps)
+
+# rate_of_change(roc) dataframe
+roc_df = pd.DataFrame(rate_change_dict, columns=countries, index=timestamp)
+
+# convert roc_df index to datetime
+roc_df.index = pd.to_datetime(roc_df.index)
+
+roc_df.index
+
+roc_df
+
+# downsample roc_df to bin months together
+roc_df = roc_df.resample("M").sum()
+
+roc_df
