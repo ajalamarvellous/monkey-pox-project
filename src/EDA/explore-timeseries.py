@@ -151,3 +151,61 @@ df_top20
 
 
 plot_country_progression(df_top20, "Top 20 countries", hue="Country")
+
+
+# Next,let's view the rate of change to get insight into countries with fastest
+# rapidly increasing rates
+def rate_of_change(df: object, duration: int):
+    """
+    This function computes the rate of change/increase of monkeypox cases for
+    different countries on the duration started
+    Parameter(s)
+    ---------------
+    df      : object
+              pandas dataframe from which we will get the info we need
+    duration: int
+              integer representing time duration we want to see
+
+    Return(s):
+    ----------
+
+    """
+    # Getting all the unique values for countries
+    countries = df["Country"].unique()
+    # initializing dictionary where we will save al our values
+    rate_dict = dict()
+    for country in countries:
+        rate_dict[country] = dict()
+
+        # slicing df to give just country of focus
+        df_ = df[df["Country"] == country]
+
+        # initializing date of first and latest appearance of the virus in the
+        # country
+        start_date = df_["Date"].min()
+        final_date = df_["Date"].max()
+        while start_date < final_date:
+            # Interval which we want to compute first
+            interval_end = start_date + timedelta(days=duration)
+            # If end of interval is beyond the latest date in our dataset, set
+            # interval end to latest date in our dataset
+            if interval_end > final_date:
+                interval_end = final_date
+
+            # getting the interval in days
+            interval = interval_end - start_date
+
+            # getting difference between the end of interval and start date
+            case_diff = (
+                df_[df_["Date"] == interval_end]["Cumulative_cases"].values[0]
+                - df_[df_["Date"] == start_date]["Cumulative_cases"].values[0]
+            )
+
+            # getting the rate of cahnge of cases over time and appending to
+            # our dictionary
+            rate_dict[country][interval_end.__str__()] = (
+                case_diff / interval.days
+            )  # noqa
+            # update start date to start from end of previous interval
+            start_date = interval_end
+    return rate_dict
