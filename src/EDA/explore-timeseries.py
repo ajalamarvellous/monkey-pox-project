@@ -243,3 +243,37 @@ roc_df
 roc_df = roc_df.resample("M").sum()
 
 roc_df
+
+top20_roc = roc_df.max(axis=0).sort_values(ascending=False)[:20]
+list(top20_roc.index)
+
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+# sns.lineplot(x=roc_df.index, y=list(top20_roc.index), data=roc_df)
+plt.plot(roc_df[list(top20_roc.index)])
+plt.title(
+    "Rate of spread of Monkeypox cases in the top2o fastest spreading \
+    months against time(month)"
+)
+plt.xlabel("Time(months)")
+plt.ylabel("Rate of spread per day")
+plt.legend(list(top20_roc.index))
+plt.savefig(Path(plot_locations, "top20_countries_roc.png"), dpi=100)
+
+xyz = roc_df[list(top20_roc.index)].unstack()
+
+plt.bar(xyz, height=xyz.values)
+
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+# sns.lineplot(x=roc_df.index, y=list(top20_roc.index), data=roc_df)
+plt.hist(roc_df[list(top20_roc.index)])
+plt.title(
+    "Rate of spread of Monkeypox cases in the top2o fastest spreading \
+    months against time(month)"
+)
+plt.xlabel("Time(months)")
+plt.ylabel("Rate of spread per day")
+plt.legend(list(top20_roc.index))
+# plt.savefig(Path(plot_locations, "top20_countries_roc.png"), dpi=100)
+
+roc_df[list(top20_roc.index)]
+sns.l(roc_df)
