@@ -274,6 +274,3 @@ plt.xlabel("Time(months)")
 plt.ylabel("Rate of spread per day")
 plt.legend(list(top20_roc.index))
 # plt.savefig(Path(plot_locations, "top20_countries_roc.png"), dpi=100)
-
-roc_df[list(top20_roc.index)]
-sns.l(roc_df)
