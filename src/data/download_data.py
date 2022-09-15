@@ -43,4 +43,5 @@ if __name__ == "__main__":
         "https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv",  # noqa
     ]
     for url in url_list:
-        main(url)
+        flow = main(url)
+        flow.run()
