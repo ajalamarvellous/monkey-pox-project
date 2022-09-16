@@ -5,25 +5,22 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-# Location to the parquet file
-# Path(__file__).parents[1]
+# Location to the parquet file and where to save visualizations
 location = Path(
-    "data", "raw", "2022-08-04-timeseries-country-confirmed.parquet"
+    "data", "raw", "2022-09-12-timeseries-country-confirmed.parquet"
 )  # noqa
 plot_locations = Path("reports", "figures").__str__()
 
 # Read the data
 df = pd.read_parquet(location)
 
-# See first five items of the file
+# BASIC DATA INFORMATION
 df.head()
 
-# View basic info about the datatype, count and how many not null values in
-# the file
 df.info()
 
-# Get the description (count, nunique, frequency, mean, median etc) of the
-# data including the non integer or float values
+df.info()
+
 df.describe(include="all")
 
 # convert column "Date" to datetime format
@@ -31,11 +28,11 @@ df["Date"] = pd.to_datetime(df["Date"])
 
 df.info()
 
-# Get all the unique values for column country
-df["Country"].unique()
-
 # Count the no of unique countries in the data
 df["Country"].nunique()
+
+# Get all the unique values for column country
+df["Country"].unique()
 
 # Count the freqeuncy of each country in the dataset and arrange in the
 # descending order
@@ -116,14 +113,17 @@ def plot_country_progression(df, country, hue=None):
     fig, ax = plt.subplots(1, 1, figsize=(10, 8))
     sns.lineplot(x=df["Date"], y=df["Cumulative_cases"], hue=hue)
     plt.title(f"Plot of Monkeypox cases in the {country} against time")
-    plt.savefig(Path(plot_locations, f"{country}.png"), dpi=100)
+    # plt.savefig(Path(plot_locations, f"{country}.png"), dpi=100)
 
 
 plot_country_progression(naija_prog, "Nigeria")
-
+naija = df[df["Country"] == "Nigeria"]
+sns.lineplot(x=naija["Date"], y=naija["Cumulative_cases"], hue=None)
+sns.lineplot(x=naija["Date"], y=naija["Cases"], hue=None)
 
 df[df["Date"] == df.Date.min() + timedelta(days=1)]
 
+df[(df["Date"] == df.Date.max()) & (df["Country"] == "Nigeria")]
 
 cameroon_prog = smoothen_curve(df, "Cameroon")
 cameroon_prog
@@ -134,7 +134,16 @@ UK_prog
 UK_prog.Date.max() - UK_prog.Date.min()
 
 plot_country_progression(UK_prog, "UK")
+uk = df[df["Country"] == "United Kingdom"]
 
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+sns.lineplot(x=uk["Date"], y=uk["Cumulative_cases"], hue=None)
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+sns.lineplot(x=uk["Date"], y=uk["Cases"], hue=None)
+
+uk_no_zero = uk[uk["Cases"] != 0]
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
+sns.lineplot(x=uk_no_zero["Date"], y=uk_no_zero["Cases"], hue=None)
 
 US_prog = smoothen_curve(df, "United States")
 US_prog
