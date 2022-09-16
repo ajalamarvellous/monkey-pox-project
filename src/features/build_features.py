@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
 # Location to the files
 RAW_FOLDER = Path("data", "raw")
@@ -127,3 +128,38 @@ countries = {
 df_regions["Country"] = df_regions["Country"].replace(countries)
 
 df_regions
+
+# Combine the two dataframes
+df_combined = pd.merge(df_regions, df_timeseries, on="Country")
+df_combined
+
+
+df_combined["Date"] = pd.to_datetime(df_combined["Date"])
+
+df_combined.info()
+
+
+def time_values(df: pd.DataFrame) -> pd.DataFrame:
+    """Generates extra feature based on the time"""
+    df["Day"] = df["Date"].dt.weekday
+    df["Week"] = df["Date"].dt.isocalendar().week
+    df["Month"] = df["Date"].dt.month
+    return df
+
+
+df_combined = time_values(df_combined)
+df_combined
+
+encoder = LabelEncoder()
+
+df_combined["Country"] = encoder.fit_transform(df_combined.Country)
+
+df_combined
+encoder.classes_
+
+
+reg_encoder = LabelEncoder()
+df_combined["Region"] = reg_encoder.fit_transform(df_combined["Region"])
+df_combined
+
+df_combined.to_parquet("./data/processed/processed_file.parquet")
